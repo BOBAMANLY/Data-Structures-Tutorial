@@ -71,6 +71,57 @@ O(n) notation performance: O(1)
 if my_queue.size() == 0:
 ```
 
+## Example
+
+This is a bowling ball cleaner program. A ball goes in, gets cleaned, and leaves. Notice the `Enqueue()` and `Dequeue()` methods that keep the program running.
+
+```python
+class Queue:
+    def __init__(self):
+        self.items = []
+
+    def isEmpty(self):
+        return self.items == []
+
+    def enqueue(self, ball):
+        self.items.insert(0, ball)
+
+    def dequeue(self):
+        return self.items.pop()
+
+    def size(self):
+        return len(self.items)
+
+def clean_ball(queue):
+    """
+    Cleans the bowling ball
+    """
+    def clean(ball):
+        print(f"{ball} Cleaned")
+    while queue.size() != 0:
+        ball = queue.dequeue()
+        clean(ball)
+
+ball_queue = Queue()
+ball_queue.enqueue("Ball 1")
+ball_queue.enqueue("Ball 2")
+ball_queue.enqueue("Ball 3")
+ball_queue.enqueue("Ball 4")
+print(ball_queue.size())
+print(ball_queue.isEmpty())
+clean_ball(ball_queue)
+
+"""
+Expected output:
+4
+False
+Ball 1 Cleaned
+Ball 2 Cleaned
+Ball 3 Cleaned
+Ball 4 Cleaned
+"""
+```
+
 # Practice
 
 This problem represents people riding a roller coaster. People enter the line and two people may ride the ride at a time. 
