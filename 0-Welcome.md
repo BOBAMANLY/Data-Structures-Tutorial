@@ -1,6 +1,6 @@
 # Data Structures Tutorial
 Welcome to a Data Structures Tutorial. This tutorial will cover 3 different and useful data structures commnonly used while programming.
-- [Queues]
+- [Queues] (1-Queue.md)
 - [Linked Lists]
 - [Decision Trees]
 
