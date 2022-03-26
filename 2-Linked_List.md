@@ -1,4 +1,4 @@
-# Queues
+# Linked Lists
 
 [Return to Welcome Page](0-Welcome.md)
 
@@ -170,47 +170,96 @@ main()
 # Practice
 
 ```python
-class Queue:
+class LinkedList:
+    class Node:
+        def __init__(self, data):
+            self.data = data
+            self.next = None
+            self.prev = None
     def __init__(self):
-        self.items = []
+        self.head = None
+        self.tail = None
 
-    def isEmpty(self):
+    def insert_head(self, data):
         # Implement this function
+        pass
 
-    def enqueue(self, item):
+    def insert_tail(self, data):
         # Implement this function
+        pass
 
-    def dequeue(self):
+    def insert_after(self, data, node):
         # Implement this function
+        pass
 
-    def size(self):
+    def delete_head(self):
         # Implement this function
+        pass
 
-def ride_the_ride(queue):
+    def delete_tail(self):
+        # Implement this function
+        pass
+
+    def delete_after(self, node):
+        # Implement this function
+        pass
+    
+    def display_linked_list(self):
+        current = self.head
+        while current:
+            print(current.data, end="\n")
+            current = current.next
+        print()
+
+
+def main():
+    linked_list = LinkedList()
+    linked_list.insert_head("John")
+    linked_list.insert_head("Jane")
+    linked_list.insert_head("Jack")
+    linked_list.display_linked_list()
+    linked_list.insert_tail("Jill")
+    linked_list.display_linked_list()
+    linked_list.insert_after("Jana", linked_list.head.next)
+    linked_list.display_linked_list()
+    linked_list.delete_head()
+    linked_list.display_linked_list()
+    linked_list.delete_tail()
+    linked_list.display_linked_list()
+    linked_list.delete_after(linked_list.head)
+    linked_list.display_linked_list()
+
     """
-    The ride can sit 2 people at a time
+    Output:
+    Jack
+    Jane
+    John
+        
+    Jack
+    Jane
+    John
+    Jill
+
+    Jack
+    Jane
+    Jana
+    John
+    Jill
+
+    Jane
+    Jana
+    John
+    Jill
+
+    Jane
+    Jana
+    John
+
+    Jane
+    John
     """
-    while queue.size() > 1:
-        person1 = queue.dequeue()
-        person2 = queue.dequeue()
-        print(person1, "and", person2, "are riding the ride")
 
-people_queue = Queue()
-people_queue.enqueue("John")
-people_queue.enqueue("Mary")
-people_queue.enqueue("Bob")
-people_queue.enqueue("Sue")
-print(people_queue.size())
-ride_the_ride(people_queue)
-print(people_queue.isEmpty())
-
-"""
-Expected output:
-4
-John and Mary are riding the ride
-Bob and Sue are riding the ride
-True
-"""
+main()
 ```
 
 [Solution](4-Solutions.md)
