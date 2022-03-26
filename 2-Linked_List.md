@@ -4,13 +4,13 @@
 
 ## Introduction
 
-Have you ever had to stand in a line at a theme park and wait to get on a ride. A queue is that exact system, but integrated into software. You have a list or queue of items, and you intereact with each item in the order that they entered the list or queue. Queues are identified as first in first out.
+A Linked List is a very interesting data structure. This is because it is not built the same as a normal list or array. It uses pointers to link nodes together, creating the link. 
 
-Keep these terms in mind:
+A node is the object, a pointer tells us what the next node is. A double linked list has pointers pointing forward and backward allowing us to iterate forwards and backwards.
 
-Back of the Queue: Last item in the queue
+##Structure
 
-Front of the Queue: First item in the queue
+{Head} --> {Node 1: data}{pointer} --> {Node 2: data}{pointer} --> null
 
 ## Common Functions
 
@@ -18,115 +18,156 @@ In python we use the list method `pop()` in order to remove items from the queue
 
 Another function we use is the `insert()` function. It can take two parameters `pos` and `element` like this `insert(pos, element)`. Pos is the position to insert the element. 
 
+The term `Head` refers to the first node in the linked list.
+
+The last item has a pointer that returns null, meaning there are no more nodes in the list.
+
 Normally, programmers will create methods called `enqueue(value)`, `dequeue()`, `size()`, and `empty()`.
 
-### `Enqueue(value)`
+### `new_node(value)`
 
-This method is created to add values onto the back of the queue, putting them in line to be processed.
+To add a new node, we have to know where we are adding it. We can add nodes to the beginning, end, or middle of a linked list.
 
 O(n) notation performance: O(1)
 
+####Empty list
+
+A special case happens if the linked list is empty. We simply add a node and set the pointers.
+
 ```python
-my_queue = Queue()
-my_queue.enqueue("John")
-print(my_queue)
-my_queue.enqueue("Jacob")
-print(my_queue)
-my_queue.enqueue("Smith")
-print(my_queue)
+def new_node(self, value):
+    new_node = Node(value)
+    self.tail = new_node
+    self.head = new_node
 ```
 
-### `Dequeue()`
+####Beginning
 
-This method will remove the item in the front of the queue. You do this once the item has been processed.
+To add a node to the beginning, we simply change the head to point to the new node, and the new node pointer will point to the now second node.
+
+```python
+def insert_head(self, value):
+    new_node = Node(value)
+    new_node.next = self.head
+    self.head.prev = new_node
+    self.head = new_node
+```
+
+####Middle
+
+While adding a node to the middle of a linked list, we must change the pointers of the previous node and the next node.
+
+```python
+def insert_middle(self, current_node, value):
+    new_node = Node(value)
+    new_node.next = current_node.next
+    current_node.next.prev = new_node
+    new_node.prev = current_node
+    current_node.next = new_node
+```
+
+####End
+
+Adding to the end of a list only requires us to change the last nodes pointers and set the new node as teh tail.
+
+```python
+def insert_end(self, value):
+    new_node = Node(value)
+    new_node.prev = self.tail
+    self.tail.next = new_node
+    self.tail = new_node
+```
+
+### `delete_node(value)`
+
+While deleting nodes, we have the same rules as adding nodes. It is all about changing the pointers.
 
 O(n) notation performance: O(n)
 
+####Remove Head
 ```python
-my_queue.dequeue()
-print(my_queue)
-my_queue.dequeue()
-print(my_queue)
-my_queue.dequeue()
-print(my_queue)
+def remove_head(self):
+    self.head.next.prev = None
+    self.head = self.head.next
 ```
 
-### `Size()`
-
-This method will return the size of the queue.
-
-O(n) notation performance: O(1)
-
+####Remove Tail
 ```python
-return len(my_queue)
+def remove_tail(self):
+    self.tail.prev.next = None
+    self.tail = self.tail.prev
 ```
 
-### `Empty()`
+####Remove Middle
+```python
+def remove_middle(self, current_node)
+    current_node.next.prev = current_node.prev
+    current_node.prev.next = current_node.next
+```
 
-This method will return True only if the queue is empty.
+##Display a linked list
 
-O(n) notation performance: O(1)
+There are a few ways to display a linked list. We can't use a normal for loop and display each item. We have to use a while loop.
+
+We iterate through each item by follwing the pointers and displaying their information at each node.
 
 ```python
-if my_queue.size() == 0:
+def display_linked_list(self):
+    current = self.head
+    while current:
+        print(current.data, end=" ")
+        current = current.next
+    print()
 ```
 
 ## Example
 
-This is a bowling ball cleaner program. A ball goes in, gets cleaned, and leaves. Notice the `Enqueue()` and `Dequeue()` methods that keep the program running.
-
 ```python
-class Queue:
+class LinkedList:
+    class Node:
+        def __init__(self, data):
+            self.data = data
+            self.next = None
+            self.prev = None
     def __init__(self):
-        self.items = []
+        self.head = None
+        self.tail = None
 
-    def isEmpty(self):
-        return self.items == []
+    def insert_head(self, data):
+        new_node = LinkedList.Node(data)
+        if self.head is None:
+            self.head = new_node
+            self.tail = new_node
+        else:
+            new_node.next = self.head
+            self.head.prev = new_node
+            self.head = new_node
 
-    def enqueue(self, ball):
-        self.items.insert(0, ball)
+    def display_linked_list(self):
+        current = self.head
+        while current:
+            print(current.data, end="\n")
+            current = current.next
+        print()
 
-    def dequeue(self):
-        return self.items.pop()
 
-    def size(self):
-        return len(self.items)
+def main():
+    linked_list = LinkedList()
+    linked_list.insert_head("John")
+    linked_list.insert_head("Jane")
+    linked_list.insert_head("Jack")
+    linked_list.display_linked_list()
 
-def clean_ball(queue):
     """
-    Cleans the bowling ball
+    Output:
+    Jack
+    Jane
+    John
     """
-    def clean(ball):
-        print(f"{ball} Cleaned")
-    while queue.size() != 0:
-        ball = queue.dequeue()
-        clean(ball)
-
-ball_queue = Queue()
-ball_queue.enqueue("Ball 1")
-ball_queue.enqueue("Ball 2")
-ball_queue.enqueue("Ball 3")
-ball_queue.enqueue("Ball 4")
-print(ball_queue.size())
-print(ball_queue.isEmpty())
-clean_ball(ball_queue)
-
-"""
-Expected output:
-4
-False
-Ball 1 Cleaned
-Ball 2 Cleaned
-Ball 3 Cleaned
-Ball 4 Cleaned
-"""
+main()
 ```
 
 # Practice
-
-This problem represents people riding a roller coaster. People enter the line and two people may ride the ride at a time. 
-
-Your job is to make sure we can enqueue, dequeue, know if the line is empty, and see how many people are in line by implementing the `Queue()` functions.
 
 ```python
 class Queue:
