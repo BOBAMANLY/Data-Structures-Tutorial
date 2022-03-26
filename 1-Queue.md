@@ -41,6 +41,7 @@ print(my_queue)
 This method will remove the item in the front of the queue. You do this once the item has been processed.
 
 O(n) notation performance: O(n)
+Note: If using a linked list, the `Dequeue()` function is actually O(1) Notation.
 
 ```python
 my_queue.dequeue()
