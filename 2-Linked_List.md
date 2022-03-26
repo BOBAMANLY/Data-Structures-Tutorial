@@ -8,7 +8,7 @@ A Linked List is a very interesting data structure. This is because it is not bu
 
 A node is the object, a pointer tells us what the next node is. A double linked list has pointers pointing forward and backward allowing us to iterate forwards and backwards.
 
-##Structure
+## Structure
 
 {Head} --> {Node 1: data}{pointer} --> {Node 2: data}{pointer} --> null
 
@@ -24,7 +24,7 @@ To add a new node, we have to know where we are adding it. We can add nodes to t
 
 O(n) notation performance: O(1)
 
-####Empty list
+#### Empty list
 
 A special case happens if the linked list is empty. We simply add a node and set the pointers.
 
@@ -35,7 +35,7 @@ def new_node(self, value):
     self.head = new_node
 ```
 
-####Beginning
+#### Beginning
 
 To add a node to the beginning, we simply change the head to point to the new node, and the new node pointer will point to the now second node.
 
@@ -47,7 +47,7 @@ def insert_head(self, value):
     self.head = new_node
 ```
 
-####Middle
+#### Middle
 
 While adding a node to the middle of a linked list, we must change the pointers of the previous node and the next node.
 
@@ -60,7 +60,7 @@ def insert_middle(self, current_node, value):
     current_node.next = new_node
 ```
 
-####End
+#### End
 
 Adding to the end of a list only requires us to change the last nodes pointers and set the new node as teh tail.
 
@@ -78,28 +78,28 @@ While deleting nodes, we have the same rules as adding nodes. It is all about ch
 
 O(n) notation performance: O(1)
 
-####Remove Head
+#### Remove Head
 ```python
 def remove_head(self):
     self.head.next.prev = None
     self.head = self.head.next
 ```
 
-####Remove Tail
+#### Remove Tail
 ```python
 def remove_tail(self):
     self.tail.prev.next = None
     self.tail = self.tail.prev
 ```
 
-####Remove Middle
+#### Remove Middle
 ```python
 def remove_middle(self, current_node)
     current_node.next.prev = current_node.prev
     current_node.prev.next = current_node.next
 ```
 
-##Display a linked list
+## Display a linked list
 
 There are a few ways to display a linked list. We can't use a normal for loop and display each item. We have to use a while loop.
 
