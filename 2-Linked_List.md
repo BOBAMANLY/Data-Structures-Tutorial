@@ -14,15 +14,9 @@ A node is the object, a pointer tells us what the next node is. A double linked 
 
 ## Common Functions
 
-In python we use the list method `pop()` in order to remove items from the queue at a certain position. `pop()` can take in one parameter, `pop(pos)`. It is the position of the item you want to remove. Keep in mind that `pop(pos)` also returns the value at pos. 
-
-Another function we use is the `insert()` function. It can take two parameters `pos` and `element` like this `insert(pos, element)`. Pos is the position to insert the element. 
-
 The term `Head` refers to the first node in the linked list.
 
-The last item has a pointer that returns null, meaning there are no more nodes in the list.
-
-Normally, programmers will create methods called `enqueue(value)`, `dequeue()`, `size()`, and `empty()`.
+The last item or `Tail` has a pointer that returns `None`, meaning there are no more nodes in the list.
 
 ### `new_node(value)`
 
@@ -82,7 +76,7 @@ def insert_end(self, value):
 
 While deleting nodes, we have the same rules as adding nodes. It is all about changing the pointers.
 
-O(n) notation performance: O(n)
+O(n) notation performance: O(1)
 
 ####Remove Head
 ```python
