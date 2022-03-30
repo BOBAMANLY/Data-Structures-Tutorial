@@ -14,9 +14,9 @@ Front of the Queue: First item in the queue
 
 ## Common Functions
 
-In python we use the list method `pop()` in order to remove items from the queue at a certain position. `pop()` can take in one parameter, `pop(pos)`. It is the position of the item you want to remove. Keep in mind that `pop(pos)` also returns the value at pos. 
+In python we use the list method `pop()` (O(n)) in order to remove items from the queue at a certain position. `pop()` can take in one parameter, `pop(pos)`. It is the position of the item you want to remove. Keep in mind that `pop(pos)` also returns the value at pos. 
 
-Another function we use is the `insert()` function. It can take two parameters `pos` and `element` like this `insert(pos, element)`. Pos is the position to insert the element. 
+Another function we use is the `insert()` (O(n)) function. It can take two parameters `pos` and `element` like this `insert(pos, element)`. Pos is the position to insert the element. 
 
 Normally, programmers will create methods called `enqueue(value)`, `dequeue()`, `size()`, and `empty()`.
 
