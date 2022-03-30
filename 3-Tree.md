@@ -7,11 +7,13 @@
 A Binary Search Tree is very similar to linked lists. However each node can hold a maximum of 2 child nodes. The data is organized by comparing the new node with the parent nodes. Items that are "less" than the parent go to the left while items that are "greater than the parent go to the right. This type of tree has a O(log n) performance.
 
 ### Example Tree
+```
         20
       /    \
    14        28
   /  \      /  \
 10   17    23   30
+```
 
 When all the items are lined up going down one "branch", the tree is actually the same as a linked list. While searching for values in this type of tree, it has O(n) performance.
 
