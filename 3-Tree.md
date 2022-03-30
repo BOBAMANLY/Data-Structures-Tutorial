@@ -18,6 +18,7 @@ A Binary Search Tree is very similar to linked lists. However each node can hold
 When all the items are lined up going down one "branch", the tree is actually the same as a linked list. While searching for values in this type of tree, it has O(n) performance.
 
 ### Tree as Linked List
+```
 20
   \
    23
@@ -25,6 +26,7 @@ When all the items are lined up going down one "branch", the tree is actually th
       26
         \
          29
+```
          
 A Binary Search Tree is all about data comparison. To find where to place a node, or "leaf", is by comparing the new node to the parent, and moving down the tree until you find an empty spot.
 
