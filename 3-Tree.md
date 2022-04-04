@@ -229,6 +229,7 @@ class BST:
         return self._contains(data, self.root)  # Start at the root
 
     def _contains(self, data, node):
+        # Implement this function
         pass
     
 tree = BST()
@@ -238,7 +239,7 @@ tree.insert(3)
 for branch in tree:
     print(branch)
 
-# Implement the contains function to see if the tree contains the data.
+# Implement the _contains function to see if the tree contains the data.
 print(1 in tree)
 print(4 in tree)
 print(3 in tree)
