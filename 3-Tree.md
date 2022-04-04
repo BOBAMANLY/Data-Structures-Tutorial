@@ -201,7 +201,7 @@ class BST:
             self._insert(data, self.root)  
 
     def _insert(self, data, node):
-        # Notice how we use recursive to find a place to insert the data
+        # Notice how we use recursion to find a place to insert the data
 
         if node.data == data:
             return
