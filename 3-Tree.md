@@ -92,14 +92,164 @@ empty()	Returns true if the root node is empty. This can also be done by checkin
 
 ## Example
 
-```python
+This example implements the Binary Search Tree and the insert function.
 
+```python
+class BST:
+
+    class Node:
+
+        def __init__(self, data):
+       
+            self.data = data
+            self.left = None
+            self.right = None
+
+    def __init__(self):
+
+        self.root = None
+#########
+# This section of code allows us to display the tree in a for loop.
+
+    def __iter__(self):
+
+        yield from self._traverse_forward(self.root)  # Start at the root
+        
+    def _traverse_forward(self, node):
+
+        if node is not None:
+            yield from self._traverse_forward(node.left)
+            yield node.data
+            yield from self._traverse_forward(node.right)
+#########
+    def insert(self, data):
+
+        if self.root is None:
+            self.root = BST.Node(data)
+        else:
+            # Start at the root
+            self._insert(data, self.root)  
+
+    def _insert(self, data, node):
+        # Notice how we use recursive to find a place to insert the data
+
+        if node.data == data:
+            return
+        if data < node.data:
+            # The data belongs on the left side.
+            if node.left is None:
+                # We found an empty spot
+                node.left = BST.Node(data)
+            else:
+                # Need to keep looking.  Call _insert
+                # recursively on the left sub-tree.
+                self._insert(data, node.left)
+        else:
+            # The data belongs on the right side.
+            if node.right is None:
+                # We found an empty spot
+                node.right = BST.Node(data)
+            else:
+                # Need to keep looking.  Call _insert
+                # recursively on the right sub-tree.
+                self._insert(data, node.right)
+    
+tree = BST()
+tree.insert(1)
+tree.insert(2)
+tree.insert(3)
+for branch in tree:
+    print(branch)
 ```
 
 # Practice
 
 ```python
+class BST:
 
+    class Node:
+
+        def __init__(self, data):
+       
+            self.data = data
+            self.left = None
+            self.right = None
+
+    def __init__(self):
+
+        self.root = None
+#########
+# This section of code allows us to display the tree in a for loop.
+
+    def __iter__(self):
+
+        yield from self._traverse_forward(self.root)  # Start at the root
+        
+    def _traverse_forward(self, node):
+
+        if node is not None:
+            yield from self._traverse_forward(node.left)
+            yield node.data
+            yield from self._traverse_forward(node.right)
+#########
+    def insert(self, data):
+
+        if self.root is None:
+            self.root = BST.Node(data)
+        else:
+            # Start at the root
+            self._insert(data, self.root)  
+
+    def _insert(self, data, node):
+        # Notice how we use recursive to find a place to insert the data
+
+        if node.data == data:
+            return
+        if data < node.data:
+            # The data belongs on the left side.
+            if node.left is None:
+                # We found an empty spot
+                node.left = BST.Node(data)
+            else:
+                # Need to keep looking.  Call _insert
+                # recursively on the left sub-tree.
+                self._insert(data, node.left)
+        else:
+            # The data belongs on the right side.
+            if node.right is None:
+                # We found an empty spot
+                node.right = BST.Node(data)
+            else:
+                # Need to keep looking.  Call _insert
+                # recursively on the right sub-tree.
+                self._insert(data, node.right)
+    
+    def __contains__(self, data):
+        
+        return self._contains(data, self.root)  # Start at the root
+
+    def _contains(self, data, node):
+        pass
+    
+tree = BST()
+tree.insert(1)
+tree.insert(2)
+tree.insert(3)
+for branch in tree:
+    print(branch)
+
+# Implement the contains function to see if the tree contains the data.
+print(1 in tree)
+print(4 in tree)
+print(3 in tree)
+
+# Expected Output:
+# 1
+# 2
+# 3
+# True
+# False
+# True
 ```
 
 [Solution](4-Solutions.md)
