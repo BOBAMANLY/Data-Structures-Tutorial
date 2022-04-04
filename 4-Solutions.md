@@ -221,12 +221,7 @@ class BST:
         return self._contains(data, self.root)  # Start at the root
 
     def _contains(self, data, node):
-        """
-        This funciton will search for a node that contains
-        'data'.  The current sub-tree being search is 
-        represented by 'node'.  This function is intended
-        to be called the first time by the __contains__ function.
-        """
+        
         if node is None:
             return False
         if node.data == data:
